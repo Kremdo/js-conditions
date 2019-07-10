@@ -41,7 +41,7 @@
         players.addEventListener("change", changeGame);
         let p1choice = document.getElementById("p1choice");
         let p2choice = document.getElementById("p2choice");
-        let choices = ["rock", "paper", "scissors"];
+        let choices = ["rock", "paper", "scissors", "Spock", "lizard"];
         let i1 = 0;
         let i2 = 0;
         let result = document.getElementById("result");
@@ -61,6 +61,16 @@
             element.innerHTML = choice;
             p2choice.append(element);
         }
+        function winner1(p1value, p2value) {
+          result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>"+"<br>" + "<b>Player 1 wins!<b>"
+          i1 += 1;
+          score1.innerHTML  = i1;
+        }
+        function winner2(p1value, p2value) {
+          result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>" + "<b>Player 2 wins!<b>"
+          i2 += 1;
+          score2.innerHTML  = i2;
+        }
         function playGame(event){
             let p1value = p1choice.value;
             let p2value;
@@ -71,46 +81,81 @@
             else {
                 p2value = choices[Math.floor(Math.random()*choices.length)];
             }
+            // when TIE
             if (p1value === p2value) {
               result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" + "<br>" + "Tie!"
             }
+            // other options
             else if (p1value === "rock") {
               if (p2value === "paper") {
-              result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>" + "Player 2 wins!"
-              i2 += 1;
-              score2.innerHTML  = i2;
+              winner2(p1value, p2value);
+              }
+              else if (p2value === "lizard") {
+              winner1(p1value, p2value);
+              }
+              else if (p2value === "Spock") {
+              winner2(p1value, p2value);
               }
               else {
-              result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>"+"<br>" + "Player 1 wins!"
-              i1 += 1;
-              score1.innerHTML  = i1;
+              winner1(p1value, p2value);
               }
             }
             else if (p1value === "paper") {
               if (p2value === "rock") {
-              result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 1 wins!"
-              i1 += 1;
-              score1.innerHTML  = i1;
+              winner1(p1value, p2value);
+              }
+              else if (p2value === "lizard") {
+              winner2(p1value, p2value);
+              }
+              else if (p2value === "Spock") {
+              winner1(p1value, p2value);
               }
               else {
-              result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 2 wins!"
-              i2 += 1;
-              score2.innerHTML  = i2;
+              winner2(p1value, p2value);
               }
             }
             else if (p1value === "scissors") {
               if (p2value === "paper") {
-              result.innerHTML   = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 1 wins!"
-              i1 += 1;
-              score1.innerHTML  = i1;
+              winner1(p1value, p2value);
+              }
+              else if (p2value === "lizard") {
+              winner1(p1value, p2value);
+              }
+              else if (p2value === "Spock") {
+              winner2(p1value, p2value);
               }
               else {
-              result.innerHTML   = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 2 wins!"
-              i2 += 1;
-              score2.innerHTML  = i2;
+              winner2(p1value, p2value);
               }
             }
-
+            else if (p1value === "Spock") {
+              if (p2value === "paper") {
+              winner2(p1value, p2value);
+              }
+              else if (p2value === "lizard") {
+              winner2(p1value, p2value);
+              }
+              else if (p2value === "rock") {
+              winner1(p1value, p2value);
+              }
+              else {
+              winner1(p1value, p2value);
+              }
+            }
+            else if (p1value === "lizard") {
+              if (p2value === "paper") {
+              winner1(p1value, p2value);
+              }
+              else if (p2value === "Spock") {
+              winner1(p1value, p2value);
+              }
+              else if (p2value === "rock") {
+              winner2(p1value, p2value);
+              }
+              else {
+              winner2(p1value, p2value);
+              }
+            }
 
 
         }
