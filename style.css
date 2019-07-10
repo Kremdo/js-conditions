@@ -1,0 +1,71 @@
+body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "header header"
+  "small small"
+  "players players"
+  "player1 player2"
+  "push score";
+  background-color: #80c9cf;
+}
+
+h1 {
+  grid-area: header;
+  margin: auto;
+}
+h2 {
+  grid-area: small;
+  margin: auto;
+}
+
+div > p {
+  text-decoration: underline;
+  font-size: 18px;
+}
+
+.players {
+  grid-area: players;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+}
+
+#players {
+  align-content: center;
+}
+
+.player1 {
+  grid-area: player1;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.player2 {
+  grid-area: player2;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.play {
+  grid-area: push;
+  margin: auto;
+  padding-top:20px;
+}
+
+#play {
+  background-color: #f59e42;
+  font-weight: bold;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+ #result {
+  grid-area: score;
+  margin: auto;
+}

@@ -3,31 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rock, paper, scissors, ...</title>
 </head>
 <body>
     <h1>Rock, Paper, Scissors....</h1>
     <h2>Lizard, Spock!</h2>
 
-    <div>
+    <div class="players">
         <h3>Amount of players</h3>
-        <select name="players" id="players">
+        <div class="players"><select name="players" id="players">
             <option value="1">1 Player</option>
             <option value="2">2 Players</option>
-        </select>
+        </select></div>
     </div>
 
-    <div>
-        <h3>Player 1</h3>
+    <div class="player1">
+        <h3 >Player 1</h3>
         <select name="p1choice" id="p1choice"></select>
+        <p>score: <span id="score1"></span></p>
     </div>
 
-    <div>
+    <div class="player2">
         <h3>Player 2</h3>
         <select name="p2choice" id="p2choice" disabled></select>
+        <p>score: <span id="score2"></span></p>
     </div>
 
-    <button id="play">Play</button>
+    <div class="play"><button id="play">Play</button></div>
 
     <div id="result"></div>
 
@@ -39,9 +42,13 @@
         let p1choice = document.getElementById("p1choice");
         let p2choice = document.getElementById("p2choice");
         let choices = ["rock", "paper", "scissors"];
-        //add result var
-        let result = document.getElementById("result")
-        //end add result
+        let i1 = 0;
+        let i2 = 0;
+        let result = document.getElementById("result");
+        let score1 = document.getElementById("score1");
+        let score2 = document.getElementById("score2");
+
+
         for (choice of choices) {
             let element = document.createElement("option");
             element.value = choice;
@@ -64,33 +71,46 @@
             else {
                 p2value = choices[Math.floor(Math.random()*choices.length)];
             }
-            if (p1value == p2value) {
-              document.getElementById("result").innerHTML  = "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" + "<br>" + "Tie!"
+            if (p1value === p2value) {
+              result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" + "<br>" + "Tie!"
             }
-            if (p1value == "rock") {
-              if (p2value == "paper") {
-              document.getElementById("result").innerHTML  = "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>" + "Player 2 wins!"
+            else if (p1value === "rock") {
+              if (p2value === "paper") {
+              result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>" + "Player 2 wins!"
+              i2 += 1;
+              score2.innerHTML  = i2;
               }
               else {
-              document.getElementById("result").innerHTML  = "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>"+"<br>" + "Player 1 wins!"
+              result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>"+"<br>" + "Player 1 wins!"
+              i1 += 1;
+              score1.innerHTML  = i1;
               }
             }
-            if (p1value == "paper") {
-              if (p2value == "rock") {
-              document.getElementById("result").innerHTML  = "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 1 wins!"
+            else if (p1value === "paper") {
+              if (p2value === "rock") {
+              result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 1 wins!"
+              i1 += 1;
+              score1.innerHTML  = i1;
               }
               else {
-              document.getElementById("result").innerHTML  = "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 2 wins!"
+              result.innerHTML  = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 2 wins!"
+              i2 += 1;
+              score2.innerHTML  = i2;
               }
             }
-            if (p1value == "scissors") {
-              if (p2value == "paper") {
-              document.getElementById("result").innerHTML   = "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 1 wins!"
+            else if (p1value === "scissors") {
+              if (p2value === "paper") {
+              result.innerHTML   = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 1 wins!"
+              i1 += 1;
+              score1.innerHTML  = i1;
               }
               else {
-              document.getElementById("result").innerHTML   = "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 2 wins!"
+              result.innerHTML   = "<br>" + "Player 1: " + p1value + "<br>" + "Player 2: " + p2value + "<br>" +"<br>"+ "Player 2 wins!"
+              i2 += 1;
+              score2.innerHTML  = i2;
               }
             }
+
 
 
         }
